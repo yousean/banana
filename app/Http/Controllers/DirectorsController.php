@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Directors;
+use App\Http\Requests\DirectorsRequest;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Http\Request;
 
@@ -40,17 +41,21 @@ class DirectorsController extends Controller{
     }
 
 
-    public function enregistrer(Request $request){
+    public function enregistrer(DirectorsRequest $request){
 
         // 1ère étape: récuperation des données soumuises
         // title est le name de mon champ
         $prenom = $request->firsname; //  équivalent à $_Post ['firsname']
         $nom = $request->lastname; // équivalent à $_Post['lastname']
+        $biographie = $request->biography;
+        $ville = $request->city;
 
         // 2ème étape: création en base de données du nouveau film
         $director = new Directors();
         $director->firstname = $prenom;
         $director->lastname = $nom;
+        $director->biography = $biographie;
+        $director->city = $ville;
         $director->save();
 
         // 3ème étape: redirection

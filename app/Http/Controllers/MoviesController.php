@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Http\Requests\MoviesRequest;
 use App\Movies;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Http\Request;
@@ -43,21 +44,31 @@ class MoviesController extends Controller{
      * Enregistrer un film en base de données depuis mes données soumises
      * en formulaires
      */
-    public function enregistrer(Request $request){
+    public function enregistrer(MoviesRequest $request){
 
-        // 1ère étape: récuperation des données soumuises
+        // 1ère étape: récuperation des données soumises
         // title est le name de mon champ
         $titre = $request->title; //  équivalent à $_Post ['title']
+        $synopsis = $request->synopsis;
         $description = $request->description; // équivalent à $_Post['description']
+        $langue = $request->langue;
         $annee = $request->annee;
+        $bo = $request->bo;
+        $date_release = $request->date_release;
         $budget = $request->budget;
         $duree = $request->duree;
+
+
 
         // 2ème étape: création en base de données du nouveau film
         $movie = new Movies();
         $movie->title = $titre;
+        $movie->synopsis = $synopsis;
         $movie->description = $description;
+        $movie->languages = $langue;
         $movie->annee = $annee;
+        $movie->bo = $bo;
+        $movie->date_release = $date_release;
         $movie->budget = $budget;
         $movie->duree = $duree;
         $movie->save();

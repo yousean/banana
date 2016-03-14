@@ -1,5 +1,7 @@
-<html>
+@extends('layout')
 
+@section('content')
+<!--
     <head>
         <style>
             html, body {
@@ -29,14 +31,18 @@
             .title {
                 font-size: 96px;
             }
+
+            img {
+                width: 30%;
+            }
         </style>
 
     </head>
+-->
 
-
-    <body>
-        <div class="container">
-            <div class="content">
+    {{--<body>--}}
+        {{--<div class="container">--}}
+            {{--<div class="content">--}}
                 <h1>Liste de nos films</h1>
                 <a href="{{route("static_welcome")}}">Home</a><br />
                 <a href="{{route("movies_creer")}}">Créer un film</a>
@@ -54,10 +60,8 @@
                     <p><a href="{{route("movies_supprimer", ['id' => $movie->id])}}">Supprimer</a></p>
                     <p><a href="{{route("movies_editer", ['id' => $movie->id])}}">Editer</a></p>
                 @endforeach
-            </div>
-        </div>
-    </body>
+@endsection
+            {{--</div>--}}
+        {{--</div>--}}
+    {{--</body>--}}
 
-
-
-</html>
