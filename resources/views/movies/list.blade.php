@@ -1,8 +1,8 @@
 @extends('layout')
 
 @section('content')
-<!--
-    <head>
+
+    {{--<head>--}}
         <style>
             html, body {
                 height: 100%;
@@ -32,36 +32,58 @@
                 font-size: 96px;
             }
 
-            img {
-                width: 30%;
-            }
+
         </style>
 
-    </head>
--->
+    {{--</head>--}}
+
 
     {{--<body>--}}
-        {{--<div class="container">--}}
-            {{--<div class="content">--}}
-                <h1>Liste de nos films</h1>
-                <a href="{{route("static_welcome")}}">Home</a><br />
-                <a href="{{route("movies_creer")}}">Créer un film</a>
-                @foreach($movies as $movie)
-                    <p>
-                        @if($movie->visible == 0)
-                            <a href="{{route("movies_visible", ['id' => $movie->id])}}">Rendre visible</a>
-                        @else
-                            <a href="{{route("movies_visible", ['id' => $movie->id])}}">Rendre invisible</a>
-                        @endif
-                    </p>
+        <div class="container">
+            <div class="content">
+                <h1>Liste des films</h1>
+                <h3><a href="{{route("static_welcome")}}"><span class="glyphicons glyphicons-home"></span> Home</a></h3>
+                <h3><a href="{{route("movies_creer")}}"><span class="glyphicons glyphicons-film"></span> Créer un film</a></h3>
+            </div>
+        </div>
 
-                    <h3><a href="{{route("movies_voir", [$movie->id])}}">{{$movie->title}}</a></h3>
-                    <img src="{{$movie->image}}">
-                    <p><a href="{{route("movies_supprimer", ['id' => $movie->id])}}">Supprimer</a></p>
-                    <p><a href="{{route("movies_editer", ['id' => $movie->id])}}">Editer</a></p>
-                @endforeach
+
+        <table class="table table-bordered mbn">
+            <thead>
+                <tr class="system">
+                    <th>id</th>
+                    <th>Photo</th>
+                    <th>Titre</th>
+                    <th>Synopsis</th>
+                    <th>Visibilité</th>
+                    <th>Supprimer</th>
+                    <th>Editer</th>
+                </tr>
+            </thead>
+
+            <tbody>
+            @foreach($movies as $movie)
+                <tr>
+                    <td><p>"{{$movie->id}}"</p></td>
+                    <td><img src="{{$movie->image}}" class="img-responsive mw100 ib "></td>
+                    <td><h4><a href="{{route("movies_voir", [$movie->id])}}">{{$movie->title}}</a></h4></td>
+                    <td>{!!str_limit(strip_tags( $movie->synopsis),$limit = 250, $end = '...')!!}</td>
+                    <td><p>
+                        @if($movie->visible == 0)
+                            <a href="{{route("movies_visible", ['id' => $movie->id])}}"><span class="glyphicons glyphicons-remove"></span></a>
+                        @else
+                            <a href="{{route("movies_visible", ['id' => $movie->id])}}"><span class="glyphicons glyphicons-ok"></span></a>
+                        @endif
+                    </p></td>
+                    <td><p><a href="{{route("movies_supprimer", ['id' => $movie->id])}}">Supprimer ce film</a></p></td>
+                    <td><p><a href="{{route("movies_editer", ['id' => $movie->id])}}">Editer ce film</a></p></td>
+                </tr>
+
+            @endforeach
+            </tbody>
+        </table>
+
 @endsection
-            {{--</div>--}}
-        {{--</div>--}}
+
     {{--</body>--}}
 

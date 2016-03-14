@@ -12,6 +12,9 @@
         <!-- asset permet de générer l'URL à partir de public -->
         <link rel='stylesheet' type='text/css' href='http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700'>
 
+        <!-- Glyphicons Pro CSS(font) -->
+        <link rel="stylesheet" type="text/css" href="{{ asset('assets/fonts/glyphicons-pro/glyphicons-pro.css')}}">
+
         <!-- FullCalendar Plugin CSS -->
         <link rel="stylesheet" type="text/css" href="{{ asset('vendor/plugins/fullcalendar/fullcalendar.min.css')}}">
 
@@ -171,18 +174,18 @@
             <header class="navbar navbar-fixed-top navbar-shadow">
                 <div class="navbar-branding">
                     <a class="navbar-brand" href="dashboard.html">
-                        <b>Absolute</b>Admin
+                        <b>Laracinema</b>Admin
                     </a>
                     <span id="toggle_sidemenu_l" class="ad ad-lines"></span>
                 </div>
                 <ul class="nav navbar-nav navbar-left">
                     <li class="dropdown menu-merge hidden-xs">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Action Rapide
                             <span class="caret caret-tp"></span>
                         </a>
                         <ul class="dropdown-menu" role="menu">
-                            <li><a href="#">Action</a></li>
-                            <li><a href="#">Another action</a></li>
+                            <li><a href="{{route("movies_creer")}}">Créer un film</a></li>
+                            <li><a href="#">Créer une catégorie</a></li>
                             <li><a href="#">Something else here</a></li>
                             <li class="divider"></li>
                             <li><a href="#">Separated link</a></li>

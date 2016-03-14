@@ -1,6 +1,8 @@
-<html>
+@extends('layout')
+{{--<html>--}}
 
-    <head>
+@section('content')
+    {{--<head>--}}
 
         <style>
             html, body {
@@ -36,14 +38,14 @@
             }
         </style>
 
-    </head>
+    {{--</head>--}}
 
 
-    <body>
+    {{--<body>--}}
         <div class="container">
             <div class="content">
-                <h1>Création films</h1>
-                <h3><a href="{{route("movies_lister")}}">retour liste des films</a></h3>
+                <h1>Créer un film</h1>
+                <h3><a href="{{route("movies_lister")}}"><span class="glyphicons glyphicons-left_arrow"></span> Retour à liste des films</a></h3>
 
                 @if(count($errors->all()))
                     <div class="alert alert-danger">
@@ -55,21 +57,22 @@
                     </div>
                 @endif
 
+                <div class="form-group">
                 <form method="post" action="{{route("movies_enregistrer")}}">
 
                     <!-- champ caché -->
                     {{ csrf_field() }}
 
                     <label for="title">Titre : </label>
-                    <input value="{{old("title")}}" name="title" id="title" />
+                    <input class="form-control" value="{{old("title")}}" name="title" id="title" />
                     <br />
 
                     <label for="synopsis">Synopsis : </label>
-                    <textarea value="{{old("synopsis")}}" name="synopsis" id="synopsis"></textarea>
+                    <textarea class="form-control" value="{{old("synopsis")}}" name="synopsis" id="synopsis"></textarea>
                     <br />
 
                     <label for="description">Description : </label>
-                    <textarea value="{{old("description")}}" id="description" name="description"></textarea>
+                    <textarea class="form-control" value="{{old("description")}}" id="description" name="description"></textarea>
                     <br />
 
                     <label for="langue">Langue : </label>
@@ -79,11 +82,11 @@
                     <br />
 
                     <label for="annee">Année : </label>
-                    <input value="{{old("annee")}}" name="annee" id="annee">
+                    <input class="form-control" value="{{old("annee")}}" name="annee" id="annee">
                     <br />
 
                     <label for="bo">BO : </label>
-                        <select value="bo" name="bo">
+                        <select class="form-control" value="bo" name="bo">
                             <option>Sélectionnez la bo
                             <option>VO
                             <option>VOST
@@ -91,25 +94,26 @@
                         </select><br />
 
                     <label for="date_release">Date de sortie : </label>
-                    <input value="{{old("date_release")}}" name="date_release" id="date_release">
+                    <input class="form-control" value="{{old("date_release")}}" name="date_release" id="date_release">
                     <br />
 
                     <label for="budget">Budget : </label>
-                    <input value="{{old("budget")}}" name="budget" id="budget">
+                    <input class="form-control" value="{{old("budget")}}" name="budget" id="budget">
                     <br />
 
                     <label for="duree">Durée : </label>
-                    <input value="{{old("duree")}}" name="duree" id="duree">
+                    <input class="form-control" value="{{old("duree")}}" name="duree" id="duree">
                     <br />
 
                     <button>Créer ce nouveau film</button>
                     <br />
 
                 </form>
+                </div>
             </div>
         </div>
-    </body>
+    {{--</body>--}}
 
+@endsection
 
-
-</html>
+{{--</html>--}}
